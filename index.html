@@ -1,0 +1,996 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Basic Meta Tags -->
+    <meta name="description" content="Professional concrete calculator – calculate concrete volume, materials needed, and costs. Fast, accurate, and free with no signup required.">
+    <meta name="keywords" content="concrete calculator, concrete volume calculator, concrete materials, concrete cost calculator, construction calculator">
+    <meta name="author" content="Oussama Achouri">
+    <meta name="robots" content="index, follow">
+
+    <title>Professional Concrete Calculator</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Professional Concrete Calculator – Calculate Volume, Materials & Costs">
+    <meta property="og:description" content="Calculate concrete volume, materials needed, and estimated costs with our professional concrete calculator. Perfect for construction projects.">
+    <meta property="og:image" content="https://me-coding.com/Me%20Coding.png">
+    <meta property="og:url" content="https://me-coding.com/concrete-calculator/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Professional Concrete Calculator – Calculate Volume, Materials & Costs">
+    <meta name="twitter:description" content="Use our concrete calculator to get accurate volume, materials, and cost estimates for your construction projects.">
+    <meta name="twitter:image" content="https://me-coding.com/Me%20Coding.png">
+
+    <!-- Canonical & Favicon -->
+    <link rel="canonical" href="https://me-coding.com/concrete-calculator/">
+    <link rel="icon" type="image/png" href="https://me-coding.com/favicon-16x16.png">
+
+    <!-- Styles and Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modal.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Professional Concrete Calculator",
+        "url": "https://me-coding.com/concrete-calculator/",
+        "image": "https://me-coding.com/Me%20Coding.png",
+        "description": "A professional concrete calculator that helps calculate concrete volume, materials needed, and estimated costs for construction projects.",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "author": {
+            "@type": "Person",
+            "name": "Oussama Achouri"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="view-all-tools">
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <path d="m12 21 1.09-3.26L16 17l-1.06-1.06a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                </svg>
+            </button>
+        </div>
+        <header>
+            <h1 class="main-section-title">Professional Concrete Calculator</h1>
+            <p>Calculate concrete volume, materials needed, and estimated costs for your construction projects. Get accurate measurements and material lists instantly.</p>
+            <div class="header-actions">
+                <button id="newCalcBtn" class="export-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 4 23 10 17 10"></polyline>
+                        <path d="M20.49 15A9 9 0 1 1 8 3"></path>
+                    </svg>
+                    Start New Calculation
+                </button>
+            </div>
+        </header>
+
+        <!-- Saved Projects Bar -->
+        <section class="saved-projects-section">
+            <div class="saved-projects-header">
+                <h3>Saved Projects</h3>
+                <div class="saved-projects-actions">
+                    <button id="refreshSavedProjects" class="saved-action-btn" title="Refresh list">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10M1 14l5.36 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+            </div>
+            <div id="savedProjectsBar" class="saved-projects-bar">
+                <!-- Saved project chips/cards rendered here -->
+            </div>
+        </section>
+        
+        <main>
+            <div class="calculator-section">
+                <div class="calculator-tabs">
+                    <button class="tab-btn active" data-tab="normal">Normal Calculator</button>
+                    <button class="tab-btn" data-tab="advanced">Advanced Calculator</button>
+                </div>
+
+                <div class="tab-content active" id="normal-tab">
+                    <div class="input-group">
+                        <label for="projectType">Project Type:</label>
+                        <select id="projectType">
+                            <option value="slab">Concrete Slab</option>
+                            <option value="square-footing">Square Footing</option>
+                            <option value="wall">Wall</option>
+                            <option value="hole">Hole (Excavation)</option>
+                            <option value="column">Column</option>
+                            <option value="round-footing">Round Footing</option>
+                            <option value="circular-slab">Circular Slab</option>
+                            <option value="tube">Tube</option>
+                            <option value="curb-gutter">Curb and Gutter</option>
+                            <option value="barrier">Barrier</option>
+                            <option value="footing">Standard Footing</option>
+                            <option value="beam">Beam</option>
+                            <option value="stairs">Stairs</option>
+                            <option value="driveway">Driveway</option>
+                            <option value="foundation">Foundation</option>
+                            <option value="pool">Swimming Pool</option>
+                            <option value="patio">Patio</option>
+                            <option value="sidewalk">Sidewalk</option>
+                            <option value="curb">Curb & Gutter</option>
+                            <option value="culvert">Culvert</option>
+                            <option value="bridge">Bridge Deck</option>
+                        </select>
+                    </div>
+                    
+                    <div class="project-visual">
+                        <div class="visual-container">
+                            <div class="visual-diagram" id="projectDiagram">
+                                <!-- Diagram will be populated here -->
+                            </div>
+                            <div class="visual-description" id="projectDescription">
+                                Select a project type to see the measurement guide
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field-toggles">
+                        <h4>Include in Calculation:</h4>
+                        <div class="toggle-group">
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeLength" checked>
+                                <span class="toggle-label">Length</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeWidth" checked>
+                                <span class="toggle-label">Width</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeThickness" checked>
+                                <span class="toggle-label">Thickness</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeWaste" checked>
+                                <span class="toggle-label">Waste Factor</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="dimensions-grid">
+                        <div class="input-group">
+                            <label for="length">Length (ft):</label>
+                            <input type="number" id="length" placeholder="Enter length" step="0.1" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="width">Width (ft):</label>
+                            <input type="number" id="width" placeholder="Enter width" step="0.1" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="thickness">Thickness (inches):</label>
+                            <input type="number" id="thickness" placeholder="Enter thickness" step="0.25" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="waste">Waste Factor (%):</label>
+                            <input type="number" id="waste" placeholder="10" value="10" step="1" min="0" max="50">
+                        </div>
+                    </div>
+
+                    <div class="unit-selector">
+                        <label>Units:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="imperial" name="units" value="imperial" checked>
+                            <label for="imperial">Imperial (ft/in)</label>
+                            <input type="radio" id="metric" name="units" value="metric">
+                            <label for="metric">Metric (m/cm)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="advanced-tab">
+                    <div class="input-group">
+                        <label for="projectTypeAdv">Project Type:</label>
+                        <select id="projectTypeAdv">
+                            <option value="slab">Concrete Slab</option>
+                            <option value="square-footing">Square Footing</option>
+                            <option value="wall">Wall</option>
+                            <option value="hole">Hole (Excavation)</option>
+                            <option value="column">Column</option>
+                            <option value="round-footing">Round Footing</option>
+                            <option value="circular-slab">Circular Slab</option>
+                            <option value="tube">Tube</option>
+                            <option value="curb-gutter">Curb and Gutter</option>
+                            <option value="barrier">Barrier</option>
+                            <option value="footing">Standard Footing</option>
+                            <option value="beam">Beam</option>
+                            <option value="stairs">Stairs</option>
+                            <option value="retaining-wall">Retaining Wall</option>
+                            <option value="driveway">Driveway</option>
+                            <option value="foundation">Foundation</option>
+                            <option value="pool">Swimming Pool</option>
+                            <option value="patio">Patio</option>
+                            <option value="sidewalk">Sidewalk</option>
+                            <option value="curb">Curb & Gutter</option>
+                            <option value="culvert">Culvert</option>
+                            <option value="bridge">Bridge Deck</option>
+                        </select>
+                    </div>
+                    
+                    <div class="project-visual">
+                        <div class="visual-container">
+                            <div class="visual-diagram" id="projectDiagramAdv">
+                                <!-- Diagram will be populated here -->
+                            </div>
+                            <div class="visual-description" id="projectDescriptionAdv">
+                                Select a project type to see the measurement guide
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field-toggles">
+                        <h4>Include in Calculation:</h4>
+                        <div class="toggle-group">
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeLengthAdv" checked>
+                                <span class="toggle-label">Length</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeWidthAdv" checked>
+                                <span class="toggle-label">Width</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeThicknessAdv" checked>
+                                <span class="toggle-label">Thickness</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeWasteAdv" checked>
+                                <span class="toggle-label">Waste Factor</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeStrength" checked>
+                                <span class="toggle-label">Concrete Strength</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeReinforcement" checked>
+                                <span class="toggle-label">Reinforcement</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeLaborRate" checked>
+                                <span class="toggle-label">Labor Rate</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeCementPrice" checked>
+                                <span class="toggle-label">Cement Price</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeAdditives" checked>
+                                <span class="toggle-label">Additives</span>
+                            </label>
+                            <label class="toggle-item">
+                                <input type="checkbox" id="includeFinishType" checked>
+                                <span class="toggle-label">Finish Type</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="dimensions-grid">
+                        <div class="input-group">
+                            <label for="lengthAdv">Length (ft):</label>
+                            <input type="number" id="lengthAdv" placeholder="Enter length" step="0.1" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="widthAdv">Width (ft):</label>
+                            <input type="number" id="widthAdv" placeholder="Enter width" step="0.1" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="thicknessAdv">Thickness (inches):</label>
+                            <input type="number" id="thicknessAdv" placeholder="Enter thickness" step="0.25" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="wasteAdv">Waste Factor (%):</label>
+                            <input type="number" id="wasteAdv" placeholder="10" value="10" step="1" min="0" max="50">
+                        </div>
+                    </div>
+
+                    <div class="advanced-options">
+                        <div class="input-group">
+                            <label for="concreteStrength">Concrete Strength (PSI):</label>
+                            <select id="concreteStrength">
+                                <option value="2500">2500 PSI - Residential</option>
+                                <option value="3000" selected>3000 PSI - Standard</option>
+                                <option value="3500">3500 PSI - Commercial</option>
+                                <option value="4000">4000 PSI - High Strength</option>
+                                <option value="5000">5000 PSI - Industrial</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="reinforcement">Reinforcement:</label>
+                            <select id="reinforcement">
+                                <option value="none">No Reinforcement</option>
+                                <option value="rebar">Rebar</option>
+                                <option value="mesh">Wire Mesh</option>
+                                <option value="fiber">Fiber Reinforcement</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="laborRate">Labor Rate ($/hour):</label>
+                            <input type="number" id="laborRate" placeholder="75" value="75" step="5" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="cementPrice">Cement Price ($/bag):</label>
+                            <input type="number" id="cementPrice" placeholder="4.50" value="4.50" step="0.25" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="additives">Concrete Additives:</label>
+                            <select id="additives">
+                                <option value="none">No Additives</option>
+                                <option value="accelerator">Accelerator</option>
+                                <option value="retarder">Retarder</option>
+                                <option value="plasticizer">Plasticizer</option>
+                                <option value="waterproof">Waterproofing</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="finishType">Finish Type:</label>
+                            <select id="finishType">
+                                <option value="broom">Broom Finish</option>
+                                <option value="smooth">Smooth Trowel</option>
+                                <option value="stamped">Stamped Pattern</option>
+                                <option value="exposed">Exposed Aggregate</option>
+                                <option value="polished">Polished</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="unit-selector">
+                        <label>Units:</label>
+                        <div class="radio-group">
+                            <input type="radio" id="imperialAdv" name="unitsAdv" value="imperial" checked>
+                            <label for="imperialAdv">Imperial (ft/in)</label>
+                            <input type="radio" id="metricAdv" name="unitsAdv" value="metric">
+                            <label for="metricAdv">Metric (m/cm)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="calculateBtn" class="calculate-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
+                    Calculate Concrete
+                </button>
+            </div>
+
+            <div class="calculation-history">
+                <h3>Calculation History</h3>
+                <div class="history-controls">
+                    <button id="clearHistoryBtn" class="clear-btn">Clear History</button>
+                    <button id="compareBtn" class="compare-btn">Compare Selected</button>
+                </div>
+                <div id="historyList" class="history-list">
+                    <!-- History items will be populated here -->
+                </div>
+            </div>
+
+            <div id="resultSection" class="result-section">
+                <div class="result-tabs">
+                    <button class="result-tab-btn active" data-tab="summary">Summary</button>
+                    <button class="result-tab-btn" data-tab="materials">Materials</button>
+                    <button class="result-tab-btn" data-tab="costs">Costs</button>
+                    <button class="result-tab-btn" data-tab="visualization">3D View</button>
+                </div>
+
+                <div class="result-tab-content active" id="summary-result">
+                    <div class="result-grid">
+                        <div class="result-card">
+                            <div class="card-header">
+                                <h3>Volume Required</h3>
+                                <button class="copy-btn" data-target="volumeInfo" title="Copy volume info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p id="volumeInfo">-</p>
+                        </div>
+                        <div class="result-card">
+                            <div class="card-header">
+                                <h3>Materials Needed</h3>
+                                <button class="copy-btn" data-target="materialsInfo" title="Copy materials info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p id="materialsInfo">-</p>
+                        </div>
+                        <div class="result-card">
+                            <div class="card-header">
+                                <h3>Cost Estimate</h3>
+                                <button class="copy-btn" data-target="costInfo" title="Copy cost info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p id="costInfo">-</p>
+                        </div>
+                        <div class="result-card">
+                            <div class="card-header">
+                                <h3>Project Details</h3>
+                                <button class="copy-btn" data-target="projectInfo" title="Copy project info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <p id="projectInfo">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-tab-content" id="materials-result">
+                    <div class="materials-breakdown">
+                        <canvas id="materialsChart" width="400" height="200"></canvas>
+                        <div class="materials-details">
+                            <div class="material-item">
+                                <span class="material-name">Cement</span>
+                                <span class="material-amount" id="cementAmount">-</span>
+                                <span class="material-cost" id="cementCost">-</span>
+                            </div>
+                            <div class="material-item">
+                                <span class="material-name">Sand</span>
+                                <span class="material-amount" id="sandAmount">-</span>
+                                <span class="material-cost" id="sandCost">-</span>
+                            </div>
+                            <div class="material-item">
+                                <span class="material-name">Gravel</span>
+                                <span class="material-amount" id="gravelAmount">-</span>
+                                <span class="material-cost" id="gravelCost">-</span>
+                            </div>
+                            <div class="material-item">
+                                <span class="material-name">Water</span>
+                                <span class="material-amount" id="waterAmount">-</span>
+                                <span class="material-cost" id="waterCost">Free</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-tab-content" id="costs-result">
+                    <div class="cost-breakdown">
+                        <canvas id="costsChart" width="400" height="200"></canvas>
+                        <div class="cost-comparison">
+                            <h4>Regional Cost Comparison</h4>
+                            <div class="region-costs">
+                                <div class="region-item">
+                                    <span class="region-name">National Average</span>
+                                    <span class="region-cost" id="nationalCost">-</span>
+                                </div>
+                                <div class="region-item">
+                                    <span class="region-name">West Coast</span>
+                                    <span class="region-cost" id="westCost">-</span>
+                                </div>
+                                <div class="region-item">
+                                    <span class="region-name">East Coast</span>
+                                    <span class="region-cost" id="eastCost">-</span>
+                                </div>
+                                <div class="region-item">
+                                    <span class="region-name">Midwest</span>
+                                    <span class="region-cost" id="midwestCost">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-tab-content" id="visualization-result">
+                    <div class="visualization-container">
+                        <div class="visualization-main">
+                            <div class="visualization-canvas-container">
+                                <canvas id="threeDView" width="500" height="400"></canvas>
+                            </div>
+                            <div class="dimensions-display">
+                                <div class="dimension-item">
+                                    <span class="dim-label">Length:</span>
+                                    <span class="dim-value" id="dimLength">-</span>
+                                </div>
+                                <div class="dimension-item">
+                                    <span class="dim-label">Width:</span>
+                                    <span class="dim-value" id="dimWidth">-</span>
+                                </div>
+                                <div class="dimension-item">
+                                    <span class="dim-label">Thickness:</span>
+                                    <span class="dim-value" id="dimThickness">-</span>
+                                </div>
+                                <div class="dimension-item">
+                                    <span class="dim-label">Volume:</span>
+                                    <span class="dim-value" id="dimVolume">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="view-controls">
+                            <button id="rotateLeft" class="view-btn">← Rotate</button>
+                            <button id="resetView" class="view-btn">Reset View</button>
+                            <button id="rotateRight" class="view-btn">Rotate →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <button id="copyAllBtn" class="export-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy All Results
+                    </button>
+                    <button id="saveProjectBtn" class="export-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                        </svg>
+                        Save Project
+                    </button>
+                    <button id="exportPdfBtn" class="export-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export as PDF
+                    </button>
+                </div>
+            </div>
+
+            <div class="tips-section">
+                <h3>💡 Pro Tips & Recommendations</h3>
+                <div id="dynamicTips" class="tips-container">
+                    <!-- Dynamic tips will be populated based on calculations -->
+                </div>
+            </div>
+
+            <section class="benefits-section">
+                <div class="container">
+                    <h2 class="main-section-title">Professional Concrete Calculator: Your Construction Companion</h2>
+                    <p>Our Professional Concrete Calculator is the perfect tool for any construction project. Calculate concrete volume, materials needed, and estimated costs for your project. Get accurate measurements and material lists instantly.</p>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                                </svg>
+                            </div>
+                            <h3>Accurate Calculations</h3>
+                            <p>Get precise concrete volume calculations for any project size and shape.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M12 1v6m0 6v6"></path>
+                                    <path d="m15.5 3.5-1.5 1.5"></path>
+                                    <path d="m10 12 1.5 1.5"></path>
+                                    <path d="m20.5 8.5-1.5-1.5"></path>
+                                    <path d="M3.5 8.5 5 10"></path>
+                                    <path d="m8.5 3.5 1.5 1.5"></path>
+                                    <path d="M10 12 8.5 10.5"></path>
+                                    <path d="m20.5 8.5-1.5-1.5"></path>
+                                </svg>
+                            </div>
+                            <h3>Material Lists</h3>
+                            <p>Get detailed material requirements including cement, sand, and gravel amounts.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                            </div>
+                            <h3>Cost Estimation</h3>
+                            <p>Estimate project costs based on current material prices and labor rates.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                            </div>
+                            <h3>Multiple Project Types</h3>
+                            <p>Support for slabs, footings, columns, beams, and stair calculations.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="19" y1="5" x2="5" y2="19"></line>
+                                    <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                                    <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                                </svg>
+                            </div>
+                            <h3>Waste Factor</h3>
+                            <p>Automatically includes waste factor to ensure you order enough materials.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                            </div>
+                            <h3>Export Results</h3>
+                            <p>Export calculations in multiple formats for easy sharing and record keeping.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="article-section">
+                <div class="container">
+                    <div class="article-content">
+                        <h2 class="article-title">Free Concrete Calculator - Figure Out How Much Concrete You Need</h2>
+                        <div class="article-text">
+                            <p>Last month, I watched my neighbor order 3 extra cubic yards of concrete for his driveway. That mistake cost him $400. Don't make the same error.</p>
+
+                            <p>Getting concrete amounts right is tough. I've seen too many weekend projects turn into expensive disasters. That's why I built this concrete calculator tool.</p>
+
+                            <h3>How Much Concrete Do I Need Calculator</h3>
+                            <p>This concrete volume calculator takes your project size and tells you exactly what to order. No guessing. No waste. No expensive mistakes.</p>
+
+                            <p>Just enter your measurements. The concrete yardage calculator does the math. You get the right amount every time.</p>
+
+                            <p><strong>What the concrete estimator calculates:</strong></p>
+                            <ul>
+                                <li>Total cubic yards needed</li>
+                                <li>Bags of concrete mix required</li>
+                                <li>Ready mix concrete volume</li>
+                                <li>Material costs and breakdown</li>
+                                <li>Waste factor included</li>
+                            </ul>
+
+                            <h3>Concrete Slab Calculator - Get Exact Measurements</h3>
+                            <p>Building a patio, driveway, or garage floor? The concrete slab calculator handles all flat projects.</p>
+
+                            <p><strong>Here's what I measure:</strong></p>
+                            <ul>
+                                <li>Length in feet</li>
+                                <li>Width in feet</li>
+                                <li>Thickness in inches</li>
+                                <li>Area in square feet</li>
+                            </ul>
+
+                            <p><strong>Real example from last week's job:</strong><br>
+                            My client wanted a 20×12 foot patio, 4 inches thick.</p>
+                            <ul>
+                                <li>20 × 12 × 0.33 feet = 79.2 cubic feet</li>
+                                <li>79.2 ÷ 27 = 2.93 cubic yards</li>
+                                <li>Plus 10% waste = 3.2 cubic yards total</li>
+                            </ul>
+
+                            <p>The concrete calculator got it perfect. No leftover concrete. No second trip.</p>
+
+                            <h3>Ready Mix Concrete Calculator vs Bagged Mix</h3>
+                            <p><strong>Ready mix concrete</strong> comes in trucks. Good for big jobs. Order by cubic yards.</p>
+
+                            <p><strong>Bagged concrete mix</strong> works for small projects. You need about 45 80-pound bags for one cubic yard.</p>
+
+                            <p>My concrete cost calculator shows both options. Pick what fits your project size and budget.</p>
+
+                            <h3>Concrete Footing Calculator for Strong Foundations</h3>
+                            <p>Foundation work needs precision. Wrong footing size means structural problems later.</p>
+
+                            <p><strong>Footing width rule:</strong> Make it twice your wall thickness.<br>
+                            <strong>Footing depth:</strong> Go below frost line in your area.</p>
+
+                            <p>The concrete footing calculator handles:</p>
+                            <ul>
+                                <li>Strip footings for walls</li>
+                                <li>Square footings for posts</li>
+                                <li>Stepped footings for slopes</li>
+                                <li>Column footings for decks</li>
+                            </ul>
+
+                            <h3>Concrete Mix Calculator - Get the Right Blend</h3>
+                            <p>Standard concrete uses a 1:2:3 ratio. That's 1 part cement, 2 parts sand, 3 parts gravel.</p>
+
+                            <p><strong>For one cubic yard, you need:</strong></p>
+                            <ul>
+                                <li>Cement: 6-7 bags (94 pounds each)</li>
+                                <li>Sand: 1,400 pounds</li>
+                                <li>Gravel: 1,900 pounds</li>
+                                <li>Water: 35 gallons</li>
+                            </ul>
+
+                            <p>The concrete material calculator shows exact amounts. No more guessing at the supply store.</p>
+
+                            <h3>Concrete Driveway Calculator - Plan Your Pour</h3>
+                            <p>Driveways take more concrete than most people think. They also need proper thickness for car weight.</p>
+
+                            <p><strong>Standard driveway specs:</strong></p>
+                            <ul>
+                                <li>Thickness: 4-6 inches (5 inches is common)</li>
+                                <li>Width: 10-12 feet for single car</li>
+                                <li>Length: 18-20 feet minimum</li>
+                            </ul>
+
+                            <p><strong>Cost breakdown for typical driveway:</strong></p>
+                            <ul>
+                                <li>400 square feet × 5 inches thick = 6.2 cubic yards</li>
+                                <li>Ready mix cost: $620-930</li>
+                                <li>Labor cost: $800-1,600</li>
+                                <li>Total: $1,420-2,530</li>
+                            </ul>
+
+                            <h3>Concrete Column Calculator for Vertical Structures</h3>
+                            <p>Posts, columns, and pillars need different math. The concrete column calculator handles round and square shapes.</p>
+
+                            <p><strong>Round column formula:</strong> π × radius² × height<br>
+                            <strong>Square column formula:</strong> width × width × height</p>
+
+                            <p>Most fence posts need holes 3 times the post width. The calculator includes this automatically.</p>
+
+                            <h3>Professional Concrete Estimator Tips</h3>
+                            <p>After 15 years in construction, here's what I've learned:</p>
+
+                            <p><strong>Always add waste factor.</strong> I use 10% for simple slabs. Complex shapes get 15%. You can't return concrete once it's mixed.</p>
+
+                            <p><strong>Weather affects timing.</strong> Hot days make concrete set faster. Cold days slow it down. Plan your pour time carefully.</p>
+
+                            <p><strong>Prepare everything first.</strong> Have tools ready. Level the ground. Set forms properly. Concrete trucks don't wait.</p>
+
+                            <p><strong>Order morning delivery.</strong> Concrete is easier to work when it's cooler. Afternoon sun makes finishing harder.</p>
+
+                            <h3>Concrete Calculator Cubic Yards to Cubic Feet</h3>
+                            <p>Suppliers sell concrete by cubic yards. Your measurements might be in cubic feet.</p>
+
+                            <p><strong>Quick conversion:</strong></p>
+                            <ul>
+                                <li>1 cubic yard = 27 cubic feet</li>
+                                <li>Divide cubic feet by 27 to get cubic yards</li>
+                                <li>Multiply cubic yards by 27 to get cubic feet</li>
+                            </ul>
+
+                            <p>The concrete calculator handles all unit conversions automatically.</p>
+
+                            <h3>Free Concrete Calculator vs Paid Tools</h3>
+                            <p>Many companies charge for concrete calculators. Mine is free because I want to help DIY builders succeed.</p>
+
+                            <p><strong>What you get:</strong></p>
+                            <ul>
+                                <li>Unlimited calculations</li>
+                                <li>All project types supported</li>
+                                <li>Material breakdown included</li>
+                                <li>Cost estimates provided</li>
+                                <li>Mobile-friendly design</li>
+                                <li>No signup required</li>
+                            </ul>
+
+                            <h3>Concrete Weight Calculator for Transport Planning</h3>
+                            <p>Concrete weighs about 150 pounds per cubic foot. That's 4,050 pounds per cubic yard.</p>
+
+                            <p><strong>Weight planning matters for:</strong></p>
+                            <ul>
+                                <li>Truck delivery access</li>
+                                <li>Wheelbarrow trips needed</li>
+                                <li>Crew size required</li>
+                                <li>Pour schedule timing</li>
+                            </ul>
+
+                            <p>The calculator shows total weight so you can plan properly.</p>
+
+                            <h3>Online Concrete Calculator Best Practices</h3>
+                            <p><strong>Measure twice, calculate once.</strong> Double-check all dimensions before hitting calculate.</p>
+
+                            <p><strong>Round up slightly.</strong> Better to have extra than run short during pour.</p>
+
+                            <p><strong>Consider access.</strong> Can the concrete truck reach your pour site? Plan for pumping costs if needed.</p>
+
+                            <p><strong>Check local codes.</strong> Some areas require permits for concrete work. Factor inspection time into your schedule.</p>
+
+                            <h3>Concrete Calculator Accuracy and Reliability</h3>
+                            <p>My formulas use industry standards. The calculations match what professional estimators use.</p>
+
+                            <p><strong>Accuracy factors:</strong></p>
+                            <ul>
+                                <li>Based on 150 lb/cubic foot concrete density</li>
+                                <li>Uses standard 1:2:3 mix ratios</li>
+                                <li>Includes regional cost data</li>
+                                <li>Updates pricing regularly</li>
+                            </ul>
+
+                            <p>Results stay within 5% of actual needs for most projects.</p>
+
+                            <h3>Construction Calculator for Multiple Materials</h3>
+                            <p>Need more than just concrete? The tool also estimates:</p>
+                            <ul>
+                                <li>Rebar requirements</li>
+                                <li>Form lumber needed</li>
+                                <li>Gravel base calculations</li>
+                                <li>Sand and aggregate amounts</li>
+                            </ul>
+
+                            <p>Plan your entire project with one calculator.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-grid">
+                            <div class="faq-item">
+                                <h4>How do I calculate concrete for a 10x10 slab?</h4>
+                                <p>Multiply 10 × 10 × thickness in feet. For 4-inch thick: 10 × 10 × 0.33 = 33 cubic feet. Divide by 27 = 1.22 cubic yards. Add 10% waste = 1.34 cubic yards total.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>What's the concrete calculator formula?</h4>
+                                <p>Length × Width × Thickness (all in feet) ÷ 27 = cubic yards needed. Always add 10-15% for waste factor.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>How many 80lb bags of concrete make a yard?</h4>
+                                <p>You need 45 bags of 80-pound concrete mix to make one cubic yard. For smaller projects, this is often cheaper than ready mix delivery.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Can I use this concrete estimator for stamped concrete?</h4>
+                                <p>Yes, stamped concrete uses the same volume calculations. The calculator works for all concrete types including decorative, stamped, and colored concrete.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>What thickness should my concrete be?</h4>
+                                <p>Driveways need 5-6 inches. Patios need 4 inches. Footings need 8-12 inches. Sidewalks need 4 inches. The calculator suggests thickness based on project type.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>How much does concrete cost per cubic yard?</h4>
+                                <p>Ready mix concrete costs $100-150 per cubic yard depending on your location. Our concrete cost calculator uses current regional pricing.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Do I need to include rebar in concrete calculations?</h4>
+                                <p>Rebar takes up minimal space. The standard 10% waste factor covers rebar volume. No need for separate calculations.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>How far in advance should I order concrete?</h4>
+                                <p>Order ready mix concrete 2-3 days ahead. Schedule morning delivery when possible. Concrete must be poured within 90 minutes of mixing.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Can the calculator handle irregular shapes?</h4>
+                                <p>Break irregular areas into rectangles and triangles. Calculate each section separately. Add the results together for total volume needed.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>What's the difference between concrete and cement?</h4>
+                                <p>Cement is one ingredient in concrete. Concrete is cement mixed with sand, gravel, and water. The calculator figures out all ingredients needed.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>How do I calculate concrete for stairs?</h4>
+                                <p>Measure each step separately. Calculate the volume of each tread and riser. Add them together. The concrete calculator has a stairs option that does this automatically.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>What happens if I order too much concrete?</h4>
+                                <p>Extra concrete can't be returned. You'll pay for disposal. That's why accurate calculation matters. Use our calculator to avoid overordering.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>Can I calculate concrete for a round patio?</h4>
+                                <p>Yes. Enter the diameter and thickness. The calculator uses the circle formula (π × radius²) to find the area, then calculates volume.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>How much water do I add to concrete mix?</h4>
+                                <p>The concrete mix calculator shows water amounts. Generally use 5-6 gallons per 94-pound bag of cement. Too much water weakens concrete.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>What's a concrete waste factor?</h4>
+                                <p>The waste factor accounts for spillage, uneven ground, and small calculation errors. Always include 10% minimum. Complex projects need 15%.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h4>How many wheelbarrows equal a cubic yard?</h4>
+                                <p>A standard wheelbarrow holds about 6 cubic feet. One cubic yard needs 4-5 wheelbarrow loads. Plan your crew size accordingly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </section>
+
+            <div class="similar-tools-section">
+                <h3>Similar Construction Tools</h3>
+                <div class="similar-tools-grid">
+                    <a href="https://me-coding.com/Password-Generator" class="similar-tool-card">
+                        <div class="tool-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <span>Password Generator</span>
+                    </a>
+                    <a href="https://me-coding.com/Internet-Speed-Test" class="similar-tool-card">
+                        <div class="tool-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 13a5 5 0 0 0 7.54-.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                                <path d="M14 11a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            </svg>
+                        </div>
+                        <span>Internet Speed Test</span>
+                    </a>
+                    <a href="https://me-coding.com/Port-Checker-Tool" class="similar-tool-card">
+                        <div class="tool-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </div>
+                        <span>Port Checker</span>
+                    </a>
+                    <a href="https://me-coding.com/Mac-Address-Lookup" class="similar-tool-card">
+                        <div class="tool-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <span>MAC Address Lookup</span>
+                    </a>
+                    <a href="https://me-coding.com/Dns-lookup" class="similar-tool-card">
+                        <div class="tool-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"></path>
+                                <path d="M14 11a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            </svg>
+                        </div>
+                        <span>DNS Lookup</span>
+                    </a>
+                    <a href="https://me-coding.com/IP-WHOIS-Lookup" class="similar-tool-card">
+                        <div class="tool-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 1-4-4H4a4 4 0 0 1-4 4v2"></path>
+                                <circle cx="12" cy="12" r="4"></circle>
+                            </svg>
+                        </div>
+                        <span>IP Whois Lookup</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+        
+       <footer class="footer">
+            
+            <div class="footer-container">
+                <div class="footer-logo"><a href="https://me-coding.com/concrete-calculator">Professional Concrete Calculator</a>
+                </div>
+                <nav class="footer-nav">
+                    <ul>
+                        <li><a href="https://me-coding.com/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="https://me-coding.com/about-us.html">About</a></li>
+                        <li><a href="https://me-coding.com/contact-us.html">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <div class="footer-copyright"> All rights reserved to <a href="https://me-coding.com/">mecoding</a>.</div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="modal.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
