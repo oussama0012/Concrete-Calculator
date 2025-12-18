@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>How to use — Concrete Calculator</title>
+  <meta name="description" content="How to use the Concrete Calculator — detailed guide to get accurate volume, materials and cost estimates."/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <nav class="main-header-nav">
+      <div class="nav-brand"><a href="index.html" class="nav-logo-link">Concrete Calculator</a></div>
+      <ul class="nav-menu">
+        <li><a href="how-to-use.html">How to use</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header style="text-align:left;">
+      <h1 class="main-section-title">How to Use the Concrete Calculator — Complete Guide</h1>
+      <p style="max-width:760px;margin:0.5rem 0 1.5rem;">
+        This step-by-step guide walks you through selecting a project type, entering measurements, understanding outputs, and using advanced options to produce professional, shareable estimates.
+      </p>
+    </header>
+
+    <main>
+      <section class="article-content" style="display:grid;grid-template-columns:1fr;gap:1.5rem;align-items:start;">
+        <div>
+          <div style="display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1.25rem;">
+            <div class="tip-item" style="padding:1.25rem;">
+              <div class="tip-title" style="font-weight:700;margin-bottom:0.5rem;">Step 1 — Choose Project Type</div>
+              <div class="tip-content">Select the project that best matches your work (slab, footing, column, driveway, stairs, pool, etc.). The form changes labels and the measurement guide so you only enter relevant dimensions.</div>
+            </div>
+
+            <div class="tip-item" style="padding:1.25rem;">
+              <div class="tip-title" style="font-weight:700;margin-bottom:0.5rem;">Step 2 — Pick Units</div>
+              <div class="tip-content">Choose Imperial (ft/in) or Metric (m/cm). This ensures the calculator interprets your dimensions correctly and displays helpful unit labels in the 3D preview.</div>
+            </div>
+
+            <div class="tip-item" style="padding:1.25rem;">
+              <div class="tip-title" style="font-weight:700;margin-bottom:0.5rem;">Step 3 — Enter Dimensions</div>
+              <div class="tip-content">Fill Length, Width (or Diameter for circular items) and Thickness (in inches or cm). For stairs, enter the number of steps as Length. Use decimals (e.g., 4.5 ft) for precision.</div>
+            </div>
+
+            <div class="tip-item" style="padding:1.25rem;">
+              <div class="tip-title" style="font-weight:700;margin-bottom:0.5rem;">Step 4 — Waste & Optional Fields</div>
+              <div class="tip-content">Keep the default 10% waste for simple slabs. Use the field toggles to include/exclude things like labor, reinforcement, additives and PSI when in Advanced mode.</div>
+            </div>
+          </div>
+
+          <div class="article-text" style="margin-bottom:1.5rem;">
+            <h3 style="margin-bottom:0.5rem;color:var(--accent-color);">Formulas & Real Examples</h3>
+            <p style="margin-bottom:0.5rem;">Basic formulas the tool uses (you don't need to compute these manually):</p>
+            <ul style="margin-left:1rem;margin-bottom:0.75rem;">
+              <li><strong>Rectangular slab:</strong> Volume (ft³) = Length × Width × Thickness(inches) ÷ 12 → divide ft³ by 27 → yd³.</li>
+              <li><strong>Circular slab:</strong> Area = π × (radius²); Volume = Area × thickness (ft) ÷ 27 → yd³.</li>
+              <li><strong>Column (cylinder):</strong> Volume = π × radius² × height (ft) ÷ 27 → yd³.</li>
+            </ul>
+
+            <h4 style="margin-top:0.5rem;">Worked Example — Patio</h4>
+            <p style="margin-bottom:0.5rem;">A 20 ft × 12 ft patio, 4" thick: 20 × 12 × (4 ÷ 12) = 80 ft³ → 80 ÷ 27 = 2.96 yd³ → +10% waste = 3.26 yd³.</p>
+
+            <h4 style="margin-top:0.5rem;">Worked Example — Circular Slab</h4>
+            <p style="margin-bottom:0.5rem;">Diameter 10 ft, thickness 4": radius = 5 ft → area = π × 5² = 78.54 ft² → volume = 78.54 × (4 ÷ 12) = 26.18 ft³ → 0.97 yd³ → +10% = 1.07 yd³.</p>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:1.5rem;">
+            <div class="tip-item pro">
+              <div class="tip-title">When to Use Advanced Mode</div>
+              <div class="tip-content">Advanced adds PSI selection, reinforcement type, labor rate, cement price and additives — use it for contractor-level estimates or bidding.</div>
+            </div>
+
+            <div class="tip-item">
+              <div class="tip-title">Ordering & Logistics</div>
+              <div class="tip-content">Most ready-mix trucks carry ~8–10 yd³. For >9 yd³ coordinate multiple trucks, staging, and consider a pump if access is constrained.</div>
+            </div>
+
+            <div class="tip-item">
+              <div class="tip-title">Reinforcement & Cover</div>
+              <div class="tip-content">Maintain 2–3 inches of concrete cover over rebar to prevent corrosion; wire mesh is often appropriate for slabs under 4" thickness.</div>
+            </div>
+
+            <div class="tip-item">
+              <div class="tip-title">Curing Best Practices</div>
+              <div class="tip-content">Keep slabs moist for 7 days minimum (longer for higher strength mixes); avoid heavy loading until 7 days, full strength ~28 days.</div>
+            </div>
+          </div>
+
+          <div class="article-text" style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Interpreting Calculator Output</h3>
+            <ol style="margin-left:1rem;">
+              <li><strong>Volume:</strong> Shows cubic yards, cubic feet and cubic meters with waste included.</li>
+              <li><strong>Materials:</strong> Bags of cement, sand and gravel estimates — bag counts are approximate for bagged mixes.</li>
+              <li><strong>Costs:</strong> Itemized materials and labor estimate; adjust labor rate and cement price in Advanced for local accuracy.</li>
+              <li><strong>3D View:</strong> Visual preview that helps verify proportions — rotate, zoom and export images or PDF report.</li>
+            </ol>
+          </div>
+
+          <div class="article-text" style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Quick Troubleshooting</h3>
+            <ul style="margin-left:1rem;">
+              <li>If the ad placeholder blocks layout, ignore it — calculator inputs and results are unaffected.</li>
+              <li>Empty or invalid numbers will trigger a prompt — ensure positive numeric values.</li>
+              <li>If the 3D view looks off, check that units and length/width fields match the selected project type (e.g., circular uses Width as diameter).</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Practical Checklists</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;">
+              <div class="tip-item">
+                <div class="tip-title">Before You Order</div>
+                <ul style="margin-left:1rem;">
+                  <li>Confirm measurements on site (measure twice)</li>
+                  <li>Decide on finish type and reinforcement</li>
+                  <li>Confirm truck access and pump needs</li>
+                </ul>
+              </div>
+
+              <div class="tip-item">
+                <div class="tip-title">At the Pour</div>
+                <ul style="margin-left:1rem;">
+                  <li>Have tools, screed, trowels and bull float ready</li>
+                  <li>Assign crew roles and pace the pour</li>
+                  <li>Use control joints and monitor slump</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Exporting & Sharing</h3>
+            <p>After calculating you can:</p>
+            <ul style="margin-left:1rem;">
+              <li>Export a polished PDF report (includes summary, materials table, costs and regional comparisons).</li>
+              <li>Save projects locally in your browser for later comparison.</li>
+              <li>Copy all results to clipboard to paste into emails or supplier forms.</li>
+            </ul>
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Extra Resources</h3>
+            <p>See the FAQ for common questions, or open the Blog for case studies and real pour stories. Contact us for feature requests or local pricing help.</p>
+          </div>
+        </div>
+
+        <aside style="position:relative;">
+          <div style="background:var(--card-bg);border-radius:16px;padding:1.25rem;box-shadow:var(--shadow-subtle);border:2px solid rgba(59,130,246,0.06);">
+            <h4 style="color:var(--accent-color);margin-bottom:0.5rem;">Quick Start Checklist</h4>
+            <ul style="margin-left:1rem;line-height:1.6;color:var(--text-primary);">
+              <li>Choose project type and units</li>
+              <li>Measure and enter Length, Width/Diameter and Thickness</li>
+              <li>Set waste factor and Advanced options if required</li>
+              <li>Click Calculate — review Materials and Costs</li>
+              <li>Save project or export PDF for ordering</li>
+            </ul>
+            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <a class="export-btn" href="index.html" style="flex:1;justify-content:center;">Open Calculator</a>
+              <a class="export-btn" href="faq.html" style="background:linear-gradient(135deg,#6b7280,#4b5563);">FAQ</a>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;background:linear-gradient(135deg, rgba(16,185,129,0.06), rgba(5,150,105,0.03));border-radius:12px;padding:12px;border-left:4px solid #10b981;">
+            <div style="font-weight:700;color:#065f46;margin-bottom:6px;">Pro Tip</div>
+            <div style="font-size:0.95rem;color:var(--text-primary);">If you're ordering ready-mix, coordinate truck arrival and placement method — a short wait can save rework.</div>
+          </div>
+
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact" style="margin-top:1.5rem;">
+      <div class="footer-container">
+        <div class="footer-logo"><a href="index.html"> Concrete Calculator</a></div>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="about-me.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer-copyright"> All rights reserved to <a href="index.html">Concrete Calculator</a>.</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

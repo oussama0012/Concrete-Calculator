@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog — Concrete Calculator</title>
+  <meta name="description" content="Blog posts about concrete tips, project highlights and best practices."/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Small local styles to create a clean 8-card grid for the blog */
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+    .post-card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-subtle); display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease; }
+    .post-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+    .post-image { width:100%; height:160px; object-fit:cover; display:block; }
+    .post-body { padding: 1rem; display:flex; flex-direction:column; gap:0.5rem; flex:1; }
+    .post-meta { font-size:0.85rem; color:var(--text-primary); opacity:0.7; }
+    .post-title { font-size:1.05rem; color:var(--accent-color); margin:0; font-weight:700; }
+    .post-excerpt { color:var(--text-primary); opacity:0.95; font-size:0.95rem; margin-top:4px; flex:1; }
+    .post-actions { margin-top:0.75rem; display:flex; gap:0.5rem; justify-content:flex-end; }
+    .read-btn { background: linear-gradient(135deg,var(--accent-color),var(--accent-color-dark)); color:#fff; border:none; padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600; font-size:0.9rem; }
+    @media (max-width:480px){ .post-image{height:120px;} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="main-header-nav">
+      <div class="nav-brand"><a href="index.html" class="nav-logo-link">Concrete Calculator</a></div>
+      <ul class="nav-menu">
+        <li><a href="how-to-use.html">How to use</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1 class="main-section-title">Blog</h1>
+      <p>Latest articles, case studies and practical tips from the field — curated to help you plan and execute concrete work with confidence.</p>
+    </header>
+
+    <main class="article-content">
+      <section class="blog-grid" aria-live="polite">
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1526403224742-0c1f7b5a6f4d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5f3f7a4f1b9f6e4d8e2d" alt="Driveway pour" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Case Study • Dec 2025</div>
+            <h3 class="post-title">Efficient Driveway Pour — Case Study</h3>
+            <p class="post-excerpt">How we planned a 6 yd³ driveway pour, minimized waste and coordinated trucks to avoid costly overages.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=efficient-driveway">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a9b4d8a5a6f2c3e9abc" alt="Weather and concrete" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Guide • Nov 2025</div>
+            <h3 class="post-title">How Weather Affects Concrete</h3>
+            <p class="post-excerpt">Best practices for hot and cold weather pours — additives, timing, and curing techniques to protect your work.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=weather-concrete">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1581092795360-3f6b0c6b9f7a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=a1b2c3d4e5f67890abc1" alt="Slab thickness" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">How-To • Oct 2025</div>
+            <h3 class="post-title">Choosing the Right Thickness for Slabs</h3>
+            <p class="post-excerpt">A practical guide to selecting slab thickness for patios, driveways and garage floors — including reinforcement tips.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=slab-thickness">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b6d5c2a8f3d4e1f2b34" alt="Mix ratios" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Reference • Sep 2025</div>
+            <h3 class="post-title">Concrete Mix Ratios — What Works</h3>
+            <p class="post-excerpt">Understand 1:2:3 and other mix recipes, how they affect strength and how the calculator uses them for material estimates.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=mix-ratios">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=8c9f7e6d5b4a3c2d1e6f" alt="Columns and footings" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Tip • Aug 2025</div>
+            <h3 class="post-title">Footings & Columns — Quick Rules</h3>
+            <p class="post-excerpt">Simple formulas and design rules for robust footings and columns so your foundation work is done right the first time.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=footings-columns">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1517519014922-8fcf0b0f7b5f?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=b2a1c3d4e5f67890abcd" alt="Rebar placement" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Build Tip • Jul 2025</div>
+            <h3 class="post-title">Rebar Placement Best Practices</h3>
+            <p class="post-excerpt">Covers proper cover, spacing and common mistakes to avoid corrosion and ensure long-lasting reinforced concrete.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=rebar-placement">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=f1e2d3c4b5a697887766" alt="Concrete finishing" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Finishing • Jun 2025</div>
+            <h3 class="post-title">Finishes: Broom, Stamped & Polished</h3>
+            <p class="post-excerpt">Compare finishes, costs and labor — and when each finish type is the right choice for your project.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=finishes-guide">Read</a></div>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <img class="post-image" src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ac9f7b6d5e4c3b2a1f09" alt="Pool construction" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+          <div class="post-body">
+            <div class="post-meta">Project • May 2025</div>
+            <h3 class="post-title">Building a Small Swimming Pool — Lessons Learned</h3>
+            <p class="post-excerpt">Planning, reinforcement, waterproofing and volume tricks for small residential pools to avoid costly surprises.</p>
+            <div class="post-actions"><a class="read-btn" href="post.html?post=small-pool">Read</a></div>
+          </div>
+        </article>
+      </section>
+
+      <p style="margin-top:1.5rem;text-align:center;color:var(--text-primary);opacity:0.8;">Want more topics? Use the Contact page to suggest articles or local case studies you'd like to see.</p>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-logo"><a href="index.html"> Concrete Calculator</a></div>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="about-me.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer-copyright"> All rights reserved to <a href="index.html">Concrete Calculator</a>.</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

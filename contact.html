@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact — Concrete Calculator</title>
+  <meta name="description" content="Contact page for Concrete Calculator — reach out for support or feedback."/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <nav class="main-header-nav">
+      <div class="nav-brand"><a href="index.html" class="nav-logo-link">Concrete Calculator</a></div>
+      <ul class="nav-menu">
+        <li><a href="how-to-use.html">How to use</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1 class="main-section-title">Contact Us</h1>
+      <p>If you need help, have feedback or want to suggest a feature — send a message below.</p>
+    </header>
+
+    <main class="article-content">
+      <form id="contactForm" onsubmit="event.preventDefault(); document.getElementById('contactResult').textContent='Message sent — thank you!';">
+        <div class="dimensions-grid">
+          <div class="input-group">
+            <label for="contactName">Name</label>
+            <input id="contactName" type="text" placeholder="Your name" required>
+          </div>
+          <div class="input-group">
+            <label for="contactEmail">Email</label>
+            <input id="contactEmail" type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" rows="6" class="ui-input" placeholder="Describe your request or feedback" required></textarea>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="export-btn" type="submit">Send Message</button>
+          <button class="export-btn" type="button" onclick="document.getElementById('contactForm').reset(); document.getElementById('contactResult').textContent='';">Reset</button>
+        </div>
+
+        <p id="contactResult" style="margin-top:1rem;color:var(--accent-color);font-weight:600;"></p>
+      </form>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-logo"><a href="index.html"> Concrete Calculator</a></div>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="about-me.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer-copyright"> All rights reserved to <a href="index.html">Concrete Calculator</a>.</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FAQ — Concrete Calculator</title>
+  <meta name="description" content="Frequently asked questions about concrete calculations, materials and costs."/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container" style="max-width:1200px; width:100%; padding:1rem;">
+    <nav class="main-header-nav">
+      <div class="nav-brand"><a href="index.html" class="nav-logo-link">Concrete Calculator</a></div>
+      <ul class="nav-menu">
+        <li><a href="how-to-use.html">How to use</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header>
+      <h1 class="main-section-title">Frequently Asked Questions</h1>
+      <p>Clear, practical answers to help you measure, order, and pour concrete with confidence.</p>
+    </header>
+
+    <main class="article-content faq-section" style="padding:0;">
+      <section style="display:grid;grid-template-columns:1fr 360px;gap:1.5rem;align-items:start;">
+        <div>
+          <div style="margin-bottom:1.25rem;">
+            <p style="color:var(--text-primary);opacity:0.95;margin-bottom:0.5rem;">
+              Quick navigation:
+              <a href="#measurements" style="color:var(--accent-color);font-weight:700;margin-left:6px;">Measurements</a> ·
+              <a href="#materials" style="color:var(--accent-color);font-weight:700;margin-left:6px;">Materials & Mix</a> ·
+              <a href="#costs" style="color:var(--accent-color);font-weight:700;margin-left:6px;">Costs & Ordering</a> ·
+              <a href="#logistics" style="color:var(--accent-color);font-weight:700;margin-left:6px;">Pour & Logistics</a>
+            </p>
+          </div>
+
+          <div id="measurements" class="faq-group" style="margin-bottom:1rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Measurements & Formulas</h3>
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>How do I calculate concrete for a rectangular slab?</h4>
+              <p>Volume (ft³) = Length (ft) × Width (ft) × Thickness (in) ÷ 12. To convert to cubic yards divide ft³ by 27. Add a waste factor (10% normal, 15% complex).</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>How do I calculate for a circular slab or column?</h4>
+              <p>Circular area = π × radius². Volume = area × thickness. For columns use height × area. Convert units as needed (inches → feet).</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>What if I have an irregular shape?</h4>
+              <p>Break the area into rectangles/triangles/circles, calculate each separately, then sum volumes. The calculator also supports many project types to simplify this.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>Worked example — patio (20×12, 4")</h4>
+              <p>20 × 12 × (4 ÷ 12) = 80 ft³ → 80 ÷ 27 = 2.96 yd³ → +10% waste → 3.26 yd³.</p>
+            </div>
+          </div>
+
+          <div id="materials" class="faq-group" style="margin-bottom:1rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Materials, Mixes & Quantities</h3>
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>How many 80 lb bags per cubic yard?</h4>
+              <p>About 45 bags of 80 lb concrete mix per cubic yard (approximate — bagged mixes vary).</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>What mix ratio is used?</h4>
+              <p>Standard mixes use a 1:2:3 ratio (cement : sand : gravel). The calculator uses reasonable defaults and provides advanced mix adjustments when you enable Professional mode.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>Do I need reinforcement (rebar/mesh/fiber)?</h4>
+              <p>Small slabs often use wire mesh; driveways and structural elements commonly need rebar. Use Advanced Mode to include reinforcement estimates and cost impact.</p>
+            </div>
+          </div>
+
+          <div id="costs" class="faq-group" style="margin-bottom:1rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Costs, Pricing & Exporting</h3>
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>How much does concrete cost per cubic yard?</h4>
+              <p>Prices vary widely by region and mix strength; the calculator shows regional comparisons in the Costs tab after a calculation. You can edit cement price and labor in Advanced to match local quotes.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>Can I export a PDF or share results?</h4>
+              <p>Yes — Export as PDF creates a professional report; Copy All Results copies a summary to clipboard. Save projects locally for later comparison.</p>
+            </div>
+          </div>
+
+          <div id="logistics" class="faq-group" style="margin-bottom:1rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.75rem;">Pouring, Scheduling & Practical Tips</h3>
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>How many trucks do I need?</h4>
+              <p>Most ready-mix trucks hold ~8–10 yd³. For larger pours plan multiple trucks and staging; the dynamic tips show truck estimates for your job size.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>When should I schedule delivery?</h4>
+              <p>Order 2–3 days ahead and prefer morning deliveries in hot weather. Coordinate site prep, crew, and access before the truck arrives.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom:0.75rem;">
+              <h4>How long do I have to place concrete?</h4>
+              <p>Ready-mix concrete should typically be placed within 90 minutes of mixing; hot weather shortens this window. For big pours, plan logistics and pumping as needed.</p>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;">
+            <h3 style="color:var(--accent-color);margin-bottom:0.5rem;">Quick troubleshooting</h3>
+            <ul style="margin-left:1rem;">
+              <li>If a field is disabled and required, re-enable it or follow the on-screen warning to avoid inaccurate estimates.</li>
+              <li>Use metric mode only if your inputs are in meters/cm; mismatched units will skew results.</li>
+              <li>If charts or 3D view look off, refresh the page or recalculate to re-render visuals.</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside>
+          <div style="background:var(--card-bg);border-radius:16px;padding:1.25rem;box-shadow:var(--shadow-subtle);border:2px solid rgba(59,130,246,0.06);">
+            <h4 style="color:var(--accent-color);margin-bottom:0.5rem;">Top FAQs</h4>
+            <ol style="margin-left:1rem;line-height:1.6;color:var(--text-primary);">
+              <li><a href="#measurements" style="color:var(--accent-color);">How to measure a slab</a></li>
+              <li><a href="#materials" style="color:var(--accent-color);">Bags per yard / Mix ratios</a></li>
+              <li><a href="#costs" style="color:var(--accent-color);">Exporting and cost estimates</a></li>
+              <li><a href="#logistics" style="color:var(--accent-color);">Truck planning & pour timing</a></li>
+            </ol>
+
+            <div style="margin-top:0.75rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
+              <a class="export-btn" href="how-to-use.html" style="flex:1;justify-content:center;">How to Use Guide</a>
+              <a class="export-btn" href="contact.html" style="background:linear-gradient(135deg,#6b7280,#4b5563);">Contact Support</a>
+            </div>
+          </div>
+
+          <div style="margin-top:1rem;background:linear-gradient(135deg, rgba(16,185,129,0.06), rgba(5,150,105,0.03));border-radius:12px;padding:12px;border-left:4px solid #10b981;">
+            <div style="font-weight:700;color:#065f46;margin-bottom:6px;">Pro Tip</div>
+            <div style="font-size:0.95rem;color:var(--text-primary);">Always add a waste factor (10% typical). For complex shapes or critical structural work consult an engineer.</div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact" style="margin-top:1.5rem;">
+      <div class="footer-container">
+        <div class="footer-logo"><a href="index.html"> Concrete Calculator</a></div>
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="about-me.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+        <div class="footer-copyright"> All rights reserved to <a href="index.html">Concrete Calculator</a>.</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
