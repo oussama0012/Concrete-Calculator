@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="modal.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        crossorigin="anonymous"></script>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -55,6 +57,17 @@
 </head>
 <body>
     <div class="container">
+        <nav class="main-header-nav">
+            <div class="nav-brand">
+                <a href="#top" class="nav-logo-link">Concrete Calculator</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="how-to-use.html">How to use</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
         <div class="view-all-tools">
             <button class="dark-mode-toggle" id="darkModeToggle">
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -79,6 +92,116 @@
                 </button>
             </div>
         </header>
+
+        <!-- Top AdSense placement above tool -->
+        <div class="ad-slot top-page-ad" id="top-page-ad">
+            <!-- Ad container — we attempt to initialize AdSense only after the element has layout width to avoid TagError -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9779341625505620"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"
+                 aria-hidden="true"></ins>
+
+            <!-- Visible placeholder to show banner placement when ads are not rendered -->
+            <div class="ads-placeholder" role="note" aria-label="Ad placement placeholder">
+                <div class="ads-placeholder-inner">
+                    <strong>Ad Banner Placeholder</strong>
+                    <div class="ads-placeholder-hint">Replace this element with your AdSense ad code or ad slot when deploying.</div>
+                </div>
+            </div>
+
+            <script>
+            (function initAdsenseSafeTop(){
+                const container = document.currentScript.parentElement;
+                if (!container) return;
+                const ins = container.querySelector('ins.adsbygoogle');
+                if (!ins) return;
+
+                let attempts = 0;
+                const maxAttempts = 10;
+                const retryDelay = 300; // ms
+
+                function tryPush() {
+                    attempts++;
+                    // measure the element's visible width
+                    const rect = ins.getBoundingClientRect();
+                    const width = rect.width || ins.offsetWidth || ins.clientWidth || 0;
+
+                    if (width > 0) {
+                        try {
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                            // mark placeholder hidden if ad library renders
+                            const placeholder = container.querySelector('.ads-placeholder');
+                            if (placeholder) placeholder.style.display = 'none';
+                        } catch (e) {
+                            // fail silently and keep placeholder visible; log in dev console
+                            console.warn('adsbygoogle.push() prevented (top):', e);
+                        }
+                    } else if (attempts < maxAttempts) {
+                        // wait for layout and try again
+                        setTimeout(tryPush, retryDelay);
+                    } else {
+                        // give up after retries — keep placeholder visible
+                        console.info('Top ad initialization skipped: container width remained 0.');
+                    }
+                }
+
+                if (document.readyState === 'complete') {
+                    tryPush();
+                } else {
+                    window.addEventListener('load', tryPush, { once: true });
+                    document.addEventListener('DOMContentLoaded', () => setTimeout(tryPush, 100), { once: true });
+                }
+            })();
+            </script>
+        </div>
+
+        <!-- Secondary AdSense placement (between tool and saved projects) -->
+        <div class="ad-slot mid-page-ad" id="mid-page-ad">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9779341625505620"
+                 data-ad-slot="2345678901"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"
+                 aria-hidden="true"></ins>
+
+            <script>
+            (function initAdsenseSafeMid(){
+                const container = document.currentScript.parentElement;
+                if (!container) return;
+                const ins = container.querySelector('ins.adsbygoogle');
+                if (!ins) return;
+                let attempts = 0;
+                const maxAttempts = 10;
+                const retryDelay = 300;
+                function tryPush() {
+                    attempts++;
+                    const rect = ins.getBoundingClientRect();
+                    const width = rect.width || ins.offsetWidth || ins.clientWidth || 0;
+                    if (width > 0) {
+                        try {
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        } catch (e) {
+                            console.warn('adsbygoogle.push() prevented (mid):', e);
+                        }
+                    } else if (attempts < maxAttempts) {
+                        setTimeout(tryPush, retryDelay);
+                    } else {
+                        console.info('Mid ad initialization skipped: container width remained 0.');
+                    }
+                }
+                if (document.readyState === 'complete') {
+                    tryPush();
+                } else {
+                    window.addEventListener('load', tryPush, { once: true });
+                    document.addEventListener('DOMContentLoaded', () => setTimeout(tryPush, 100), { once: true });
+                }
+            })();
+            </script>
+        </div>
 
         <!-- Saved Projects Bar -->
         <section class="saved-projects-section">
@@ -568,7 +691,7 @@
                 </div>
             </div>
 
-            <section class="benefits-section">
+            <section class="benefits-section" id="benefits">
                 <div class="container">
                     <h2 class="main-section-title">Professional Concrete Calculator: Your Construction Companion</h2>
                     <p>Our Professional Concrete Calculator is the perfect tool for any construction project. Calculate concrete volume, materials needed, and estimated costs for your project. Get accurate measurements and material lists instantly.</p>
@@ -649,7 +772,7 @@
                 </div>
             </section>
 
-            <section class="article-section">
+            <section class="article-section" id="how-to-use">
                 <div class="container">
                     <div class="article-content">
                         <h2 class="article-title">Free Concrete Calculator - Figure Out How Much Concrete You Need</h2>
@@ -837,7 +960,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-section">
+                    <div class="faq-section" id="faq">
                         <h3>Frequently Asked Questions</h3>
                         <div class="faq-grid">
                             <div class="faq-item">
@@ -912,7 +1035,9 @@
             
         </main>
         
-       <footer class="footer">
+
+
+       <footer class="footer" id="contact">
             
             <div class="footer-container">
                 <div class="footer-logo"><a href="https://concretecalculator.space/"> Concrete Calculator</a>
