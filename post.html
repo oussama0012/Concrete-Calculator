@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Blog Post — Concrete Calculator</title>
+  <meta name="description" content="Article from the Concrete Calculator blog."/>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="modal.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    .post-container{max-width:900px;margin:2rem auto;padding:1rem;}
+    .post-hero{width:100%;height:260px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow-subtle)}
+    .post-meta{color:var(--accent-color);font-weight:700;margin-top:0.75rem}
+    .post-body{background:var(--card-bg);padding:1.5rem;border-radius:12px;margin-top:1rem;box-shadow:var(--shadow-subtle)}
+    .back-link{display:inline-block;margin-top:1rem;color:var(--accent-color);text-decoration:none;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="container post-container">
+    <nav class="main-header-nav" aria-hidden>
+      <div class="nav-brand"><a href="index.html" class="nav-logo-link">Concrete Calculator</a></div>
+      <ul class="nav-menu" style="opacity:0.9">
+        <li><a href="how-to-use.html">How to use</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header id="postHeader">
+      <h1 id="postTitle" class="main-section-title">Loading…</h1>
+      <div id="postMeta" class="post-meta">—</div>
+    </header>
+
+    <main>
+      <img id="postHero" class="post-hero" src="https://via.placeholder.com/1400x800?text=Image+Unavailable" alt="Post image" onerror="this.onerror=null;this.src='https://via.placeholder.com/1400x800?text=Image+Unavailable';">
+      <article id="postContent" class="post-body">Loading content…</article>
+      <a class="back-link" href="blog.html">← Back to blog</a>
+    </main>
+
+    <footer class="footer" id="contact" style="margin-top:2rem;">
+      <div class="footer-container">
+        <div class="footer-logo"><a href="index.html"> Concrete Calculator</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const posts = {
+        'efficient-driveway': {
+          title: 'Efficient Driveway Pour — Case Study',
+          meta: 'Case Study • Dec 2025',
+          hero: 'https://images.unsplash.com/photo-1526403224742-0c1f7b5a6f4d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=5f3f7a4f1b9f6e4d8e2d',
+          content: `<p>We planned a 6 yd³ driveway pour to cut waste and cost. We measured the site twice. We set clear access paths for trucks. We staged tools and crew before trucks arrived.</p>
+<p>We scheduled an early morning delivery. Cooler temps kept the concrete workable longer. We used control joints at 8–10 ft spacing. These cuts help prevent random cracks later.</p>
+<p>We confirmed truck capacity and arrival windows. Two trucks arrived on time. We used wheelbarrows and a pump for tight spots. We finished and cured the slab in phases.</p>
+<h4>Key takeaways</h4>
+<ul>
+<li>Measure twice and plan truck access.</li>
+<li>Schedule morning delivery in warm weather.</li>
+<li>Place control joints every 8–10 ft on large slabs.</li>
+<li>Add 10% waste for simple pours; 15% for complex shapes.</li>
+</ul>
+<h4>FAQ</h4>
+<dl>
+<dt>How much extra should I order?</dt>
+<dd>Order 10% extra for simple slabs. Use 15% for odd shapes and waste.</dd>
+<dt>How long is the working time?</dt>
+<dd>About 60–90 minutes after mix. Hot weather shortens time.</dd>
+</dl>`
+        },
+        'weather-concrete': {
+          title: 'How Weather Affects Concrete',
+          meta: 'Guide • Nov 2025',
+          hero: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3a9b4d8a5a6f2c3e9abc',
+          content: `<p>Weather changes how concrete sets and cures. Plan pours for mild conditions when possible. If hot, pour early and use sun shade. If cold, use heaters and blankets.</p>
+<p>Admixtures can help. Use retarders to slow set in heat. Use accelerators in cold to speed strength gain. Use plasticizers to keep workability without extra water.</p>
+<p>Protect fresh concrete from rain for at least 24 hours. In winter, avoid freezing for the first 24–72 hours. Curing matters more than initial finishing for long term strength.</p>
+<h4>Practical tips</h4>
+<ul>
+<li>Pick delivery time for cooler hours in summer.</li>
+<li>Bring tarps and heaters in cold months.</li>
+<li>Test a small sample mix if conditions are unusual.</li>
+</ul>
+<h4>FAQ</h4>
+<dl>
+<dt>What if rain starts during a pour?</dt>
+<dd>Cover the work with tarps quickly. Do not work water into the surface.</dd>
+<dt>Can I pour in freezing weather?</dt>
+<dd>Only with proper cold-weather procedures and additives.</dd>
+</dl>`
+        },
+        'slab-thickness': {
+          title: 'Choosing the Right Thickness for Slabs',
+          meta: 'How-To • Oct 2025',
+          hero: 'https://images.unsplash.com/photo-1581092795360-3f6b0c6b9f7a?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=a1b2c3d4e5f67890abc1',
+          content: `<p>Pick slab thickness by use and load. Patios and walkways need 4 inches. Driveways need 4–6 inches. Garages often use 5 inches with reinforcement.</p>
+<p>Thicker slabs resist heavy loads. Thinner slabs save materials but may crack under vehicles. Always check local code and common practice.</p>
+<p>Reinforcement matters. Use mesh for small slabs. Use rebar for driveways and load bearing slabs. Keep 2–3 in cover over rebar to prevent rust.</p>
+<h4>Worked example</h4>
+<p>A 20 × 12 ft patio at 4 inches needs about 3.3 yd³ after 10% waste. The math is simple: length × width × (thickness ÷ 12) then divide by 27.</p>
+<h4>FAQ</h4>
+<dl>
+<dt>Do I always need reinforcement?</dt>
+<dd>Small decorative slabs can use mesh. Driveways and structural slabs need rebar.</dd>
+<dt>How deep should footings be?</dt>
+<dd>Footing depth varies by load and frost line. Check local code or an engineer.</dd>
+</dl>`
+        },
+        'mix-ratios': {
+          title: 'Concrete Mix Ratios — What Works',
+          meta: 'Reference • Sep 2025',
+          hero: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=7b6d5c2a8f3d4e1f2b34',
+          content: `<p>Mix ratios guide strength and workability. A common mix is 1:2:3 (cement : sand : gravel). That ratio makes a general purpose concrete for many tasks.</p>
+<p>Bag mixes and ready mix use slightly different blends. For precise strength, use PSI targets to pick mix proportions. In Advanced mode you can adjust mix for PSI and additives.</p>
+<p>Water controls workability. Too much weakens concrete. Add plasticizer to increase slump without weakening the mix.</p>
+<h4>Quick numbers</h4>
+<ul>
+<li>One cubic yard needs about 45 bags of 80 lb mix.</li>
+<li>One cubic yard weighs about 4,050 lb (about 1.84 metric tons).</li>
+</ul>
+<h4>FAQ</h4>
+<dl>
+<dt>How much water per bag?</dt>
+<dd>Follow the bag directions. Too much water reduces strength.</dd>
+<dt>Can I change ratio on site?</dt>
+<dd>Small tweaks are okay for hand mixes. For large jobs stick to designed mix.</dd>
+</dl>`
+        },
+        'footings-columns': {
+          title: 'Footings & Columns — Quick Rules',
+          meta: 'Tip • Aug 2025',
+          hero: 'https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=8c9f7e6d5b4a3c2d1e6f',
+          content: `<p>Footings spread loads into the soil. A rule of thumb is footing width twice the wall thickness. Depth depends on load and frost line. When in doubt, check a pro.</p>
+<p>Columns use cylinder math: area = π × r². Then multiply by height for volume. For square columns use width × width × height. Keep consistent units.</p>
+<p>Place rebar on chairs to keep it at the right elevation. Proper cover matters to prevent corrosion and preserve strength.</p>
+<h4>Checklist</h4>
+<ul>
+<li>Confirm soil bearing capacity.</li>
+<li>Set rebar and chairs before placing concrete.</li>
+<li>Use forms and bracing to hold shape during pour.</li>
+</ul>
+<h4>FAQ</h4>
+<dl>
+<dt>How much rebar is needed?</dt>
+<dd>Depends on load and design. Use code tables or a structural engineer.</dd>
+<dt>Do footings need gravel base?</dt>
+<dd>Yes. A compacted base improves support and drainage.</dd>
+</dl>`
+        },
+        'rebar-placement': {
+          title: 'Rebar Placement Best Practices',
+          meta: 'Build Tip • Jul 2025',
+          hero: 'https://images.unsplash.com/photo-1517519014922-8fcf0b0f7b5f?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=b2a1c3d4e5f67890abcd',
+          content: `<p>Place rebar to control cracks and carry loads. Use chairs and spacers to hold bars off the base. Keep 2–3 in of concrete cover to protect rebar from corrosion.</p>
+<p>Tie intersections securely. Use proper lap lengths when splicing. Avoid walking on placed bars to keep them in position.</p>
+<p>Inspect layout before concrete arrives. A quick check can avoid costly repairs later. When in doubt, ask the inspector or a professional.</p>
+<h4>FAQ</h4>
+<dl>
+<dt>What is lap splice?</dt>
+<dd>It is the overlap length where bars are tied to act as one piece.</dd>
+<dt>Can I use mesh instead?</dt>
+<dd>Mesh works for thin slabs. Heavy loads usually need rebar.</dd>
+</dl>`
+        },
+        'finishes-guide': {
+          title: 'Finishes: Broom, Stamped & Polished',
+          meta: 'Finishing • Jun 2025',
+          hero: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=f1e2d3c4b5a697887766',
+          content: `<p>Finish choice affects look and cost. Broom finish adds traction for walkways. Stamped finish adds pattern for patios. Polished finish gives a hard, glossy surface.</p>
+<p>Finish early and finish right. Timing is key. Work too soon and you will weaken the surface. Wait too long and finishing becomes hard work.</p>
+<p>Plan protection after finishing. Cover or fence off areas to prevent foot traffic for the curing period.</p>
+<h4>FAQ</h4>
+<dl>
+<dt>When can I walk on a new slab?</dt>
+<dd>Usually after 24–48 hours for light foot traffic. Heavy use waits longer.</dd>
+<dt>Does stamped concrete crack more?</dt>
+<dd>Cracking depends on design and joints, not finish alone.</dd>
+</dl>`
+        },
+        'small-pool': {
+          title: 'Building a Small Swimming Pool — Lessons Learned',
+          meta: 'Project • May 2025',
+          hero: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=ac9f7b6d5e4c3b2a1f09',
+          content: `<p>Pools need careful planning. Reinforcement, waterproofing and drainage are vital. Compute volumes accurately to estimate material and pump needs.</p>
+<p>Work with a geotech and structural designer for best results on tricky sites. Waterproofing should be continuous and inspected before finishing.</p>
+<p>Use the calculator to plan volumes. Check delivery logistics and staging for trucks and pumps to avoid delays during the pour.</p>
+<h4>FAQ</h4>
+<dl>
+<dt>How deep should the pool be?</dt>
+<dd>Depth is a design choice. Shallow pools use less concrete but limit use.</dd>
+<dt>Do I need a specialist?</dt>
+<dd>Yes. Pools have unique structural and waterproofing needs.</dd>
+</dl>`
+        }
+      };
+
+      function getQueryParam(name){
+        const params = new URLSearchParams(location.search);
+        return params.get(name);
+      }
+
+      const key = getQueryParam('post') || 'efficient-driveway';
+      const post = posts[key];
+
+      if (!post) {
+        document.getElementById('postTitle').textContent = 'Post not found';
+        document.getElementById('postMeta').textContent = '';
+        document.getElementById('postContent').innerHTML = '<p>Sorry, the article you requested could not be found.</p>';
+        document.getElementById('postHero').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('postTitle').textContent = post.title;
+      document.getElementById('postMeta').textContent = post.meta;
+      const hero = document.getElementById('postHero');
+      // add robust fallback handler in case external hero image fails to load
+      hero.onerror = function() {
+        this.onerror = null;
+        this.src = 'https://via.placeholder.com/1400x800?text=Image+Unavailable';
+      };
+      hero.src = post.hero || 'https://via.placeholder.com/1400x800?text=Image+Unavailable';
+      hero.alt = post.title;
+      document.getElementById('postContent').innerHTML = post.content;
+    })();
+  </script>
+</body>
+</html>
+
