@@ -75,4 +75,3 @@
     window.uiConfirm = uiConfirm;
     window.uiPrompt = uiPrompt;
 })();
-
