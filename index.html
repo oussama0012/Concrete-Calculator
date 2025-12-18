@@ -54,29 +54,7 @@
         }
     }
     </script>
-    <script>
-  const noIndexPosts = [
-    "efficient-driveway",
-    "weather-concrete",
-    "slab-thickness",
-    "mix-ratios",
-    "footings-columns",
-    "rebar-placement",
-    "finishes-guide",
-    "small-pool"
-  ];
-
-  const params = new URLSearchParams(window.location.search);
-  const post = params.get("post");
-
-  if (noIndexPosts.includes(post)) {
-    const meta = document.createElement("meta");
-    meta.name = "robots";
-    meta.content = "noindex, nofollow";
-    document.head.appendChild(meta);
-  }
-</script>
-
+    
 </head>
 <body>
     <div class="container">
