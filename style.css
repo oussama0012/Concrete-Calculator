@@ -70,6 +70,54 @@ header p {
     font-weight: 300;
 }
 
+.top-page-ad, .mid-page-ad, .bottom-page-ad, .ad-slot {
+    margin: 1.5rem auto;
+    max-width: 970px;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* keep placeholder look but allow spacing differences per slot */
+.mid-page-ad .ads-placeholder { margin-top: 8px; max-width: 728px; }
+.bottom-page-ad .ads-placeholder { margin-top: 8px; max-width: 970px; }
+
+/* Ads placeholder styling — visible guide for ad placement during development */
+.ads-placeholder {
+    margin-top: 12px;
+    width: 100%;
+    max-width: 970px;
+    border: 2px dashed rgba(59,130,246,0.35);
+    background: linear-gradient(180deg, rgba(59,130,246,0.03), rgba(59,130,246,0.01));
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(59,130,246,0.06);
+}
+
+.ads-placeholder-inner {
+    text-align: center;
+    color: var(--text-primary);
+    opacity: 0.9;
+}
+
+.ads-placeholder-inner strong {
+    display: block;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.ads-placeholder-hint {
+    font-size: 13px;
+    color: var(--text-primary);
+    opacity: 0.75;
+}
+
 .header-actions {
     display: flex;
     justify-content: center;
@@ -2940,9 +2988,9 @@ h1.main-section-title:hover {
     }
 
     .similar-tools-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
-
+    
     .export-section {
         flex-direction: column;
         align-items: stretch;
@@ -2975,8 +3023,7 @@ h1.main-section-title:hover {
     }
     
     .toggle-group {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        grid-template-columns: 1fr;
     }
     
     .materials-breakdown,
@@ -2989,7 +3036,7 @@ h1.main-section-title:hover {
     .visualization-container canvas {
         max-width: 100%;
         width: 100%;
-        height: 200px;
+        height: 150px;
     }
     
     .materials-details,
@@ -3012,10 +3059,8 @@ h1.main-section-title:hover {
     }
     
     .view-btn {
-        width: 100%;
-        max-width: 250px;
         padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 }
 
@@ -3053,7 +3098,7 @@ h1.main-section-title:hover {
     .materials-breakdown canvas,
     .cost-breakdown canvas,
     .visualization-container canvas {
-        height: 150px;
+        height: 100px;
     }
     
     .visualization-container {
@@ -3067,5 +3112,75 @@ h1.main-section-title:hover {
     .view-btn {
         padding: 0.75rem 1.25rem;
         font-size: 0.85rem;
+    }
+}
+
+/* Top navigation header */
+.main-header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(37,99,235,0.04));
+    border-radius: 999px;
+    border: 1px solid rgba(59,130,246,0.18);
+    box-shadow: 0 8px 18px rgba(59,130,246,0.15);
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+.nav-logo-link {
+    text-decoration: none;
+    color: var(--accent-color);
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-color-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    transition: all 0.25s ease;
+}
+
+.nav-menu a:hover {
+    background: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 6px 14px rgba(59,130,246,0.35);
+}
+
+@media (max-width: 768px) {
+    .main-header-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        border-radius: 18px;
+        text-align: center;
+    }
+    .nav-menu {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav-menu a {
+        padding: 0.3rem 0.75rem;
     }
 }
